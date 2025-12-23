@@ -36,12 +36,14 @@ Query: "What programming languages are good for AI development?"
 This implementation is based on the following paper:
 
 ```bibtex
-@article{refrag2024,
-  title={REFRAG: Representation-Focused Retrieval Augmented Generation},
-  author={Meta AI Research},
-  journal={arXiv preprint arXiv:2509.01092},
-  year={2024},
-  url={https://arxiv.org/abs/2509.01092}
+@misc{lin2025refragrethinkingragbased,
+      title={REFRAG: Rethinking RAG based Decoding}, 
+      author={Xiaoqiang Lin and Aritra Ghosh and Bryan Kian Hsiang Low and Anshumali Shrivastava and Vijai Mohan},
+      year={2025},
+      eprint={2509.01092},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2509.01092}, 
 }
 ```
 
