@@ -18,14 +18,23 @@ Based on [Meta AI's REFRAG paper (arXiv:2509.01092)](https://arxiv.org/abs/2509.
 
 ## 📊 Benchmarks
 
-| Method      | Top Result                         | Retrieval Time | Index Time (5 docs) |
-| ----------- | ---------------------------------- | -------------- | ------------------- |
-| Vanilla RAG | Python, Rust, **JavaScript**       | 0.168s         | 0.33s               |
-| REFRAG      | Python, Rust, **Machine Learning** | **0.029s**     | 7.4s                |
+**Fair Comparison:** Both methods use `sentence-transformers/all-MiniLM-L6-v2` for embeddings. This isolates the REFRAG technique (LLM-generated representations) rather than just comparing embedding quality.
 
-Query: "What programming languages are good for AI development?"
+### Performance Results
 
-**REFRAG correctly ranked Machine Learning content over JavaScript** - better semantic understanding through LLM representations.
+| Method | Index Time (5 docs) | Retrieval Time | Top Result Quality |
+|--------|---------------------|----------------|-------------------|
+| **Vanilla RAG** | 0.405s | 0.095s | Python, Rust, JavaScript |
+| **REFRAG (first run)** | 5.263s | **0.023s** ⚡ | Python, Rust, **Machine Learning** ✓ |
+| **REFRAG (cached)** | **0.012s** 🚀 | **0.012s** 🚀 | Python, Rust, **Machine Learning** ✓ |
+
+### Key Takeaways
+
+- **First run:** 13x slower indexing (LLM generates representations)
+- **Cached runs:** **34x faster** indexing than vanilla (representations reused)
+- **Retrieval:** **4-8x faster** than vanilla RAG
+- **Quality:** Better semantic matching (finds "Machine Learning" instead of "JavaScript")
+- **Cache benefit:** **424x speedup** between first and subsequent indexes
 
 [See full comparison](examples/compare_with_vanilla_rag.py)
 

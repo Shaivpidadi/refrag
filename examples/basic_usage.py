@@ -3,7 +3,7 @@
 Basic REFRAG usage example
 """
 
-from dotenv import load_dotenv  # Add this
+from dotenv import load_dotenv
 load_dotenv()
 
 from refrag import REFRAGRetriever
